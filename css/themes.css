@@ -1,0 +1,17 @@
+[data-theme="egyptian"] {
+	--themeBG: url("../images/egyptian/bg.jpg");
+	--themeTitleColor: white;
+	--themeTitleFont: "Arial";
+}
+
+[data-theme="anime"] {
+	--themeBG: url("../images/anime/bg.jpg");
+}
+
+[data-theme="cartoon-network"] {
+	--themeBG: url("../images/cartoon-network/bg.jpg");
+}
+
+[data-theme="spacetoon"] {
+	--themeBG: url("../images/spacetoon/bg.jpg");
+}
