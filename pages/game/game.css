@@ -67,10 +67,11 @@
 #board-container {
 	border-radius: 10px;
 	overflow: hidden;
+	width: 100%;
 }
 
 #board {
-	width: 100%;
+	/* width: 100%;
 	height: 100%;
 
 	display: flex;
@@ -78,7 +79,18 @@
 	flex-wrap: wrap;
 
 	overflow: auto;
+	padding: 0 10px; */
+
+	width: 100%;
+	/* height: 100%; */
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	overflow: auto;
 	padding: 0 10px;
+	max-height: 100%;
+	aspect-ratio: 1;
+	margin: auto;
 }
 
 .cell {
@@ -88,13 +100,19 @@
 	font-size: 30px;
 	text-align: center;
 	aspect-ratio: 1;
-	width: calc(100% / 9);
 	border-radius: 8px;
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: cover;
 }
 
+.cell.row-4 {
+	width: calc(100% / 4);
+}
+
+.cell.row-9 {
+	width: calc(100% / 9);
+}
 .cell.selected {
 	border-color: black;
 }
