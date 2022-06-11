@@ -91,7 +91,7 @@ section[id$="-page"] {
 		max-width: 90%;
 	}
 
-	#message-container p {
+	#message-container * {
 		display: none;
 	}
 
