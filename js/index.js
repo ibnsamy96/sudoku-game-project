@@ -32,7 +32,7 @@ document.body.addEventListener("showThemeSelector", function (event) {
 	initThemeSelectionPage();
 });
 
-document.body.addEventListener("page3Shown", function (event) {
+document.body.addEventListener("showGame", function (event) {
 	event.stopPropagation();
 	if (document.querySelector("#game-page")) clearGamePage();
 	document.querySelector("#login-page").classList.add("d-none");
