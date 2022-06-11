@@ -24,7 +24,7 @@ export class Board {
 		this.#cellsArray.forEach((cell, index) => {
 			cell.currentValue = {
 				number: problem[index],
-				imageUrl: `../images/${getFromLocalStorage("theme") || "egyptian"}/${
+				imageUrl: `../images/${getFromLocalStorage("theme")}/${
 					problem[index]
 				}.jpg`,
 			};

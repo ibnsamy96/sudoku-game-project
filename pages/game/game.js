@@ -1,5 +1,6 @@
 import { fetchBoard } from "../../api.js";
 import { Board } from "../../js/board.js";
+import { getFromLocalStorage } from "../../js/local-storage.js";
 
 const loader = document.querySelector("#loader-container");
 const gamePage = document.querySelector("#game-page");
@@ -11,6 +12,8 @@ let gameBoard;
 	const data = await fetchBoard(9);
 	gameBoard = new Board(9, data.board, data.solution);
 	console.log(data);
+
+	updateGameInfo();
 	renderBoard(gameBoard);
 
 	loader.classList.add("d-none");
@@ -25,8 +28,9 @@ function renderBoard(gameBoard) {
 
 function changeCellValue(number, currentSelectedCell) {
 	currentSelectedCell.currentValue = number;
-	currentSelectedCell.element.style.backgroundImage =
-		"url(../images/egyptian/" + number + ".jpg)";
+	currentSelectedCell.element.style.backgroundImage = `url(../images/${getFromLocalStorage(
+		"theme"
+	)}/${number}.jpg)`;
 
 	const wrongCells = gameBoard.isThereWrongCells();
 	if (wrongCells.length === 0) declareWinner();
@@ -163,4 +167,22 @@ function declareWinner() {
 	btns.appendChild(playAgainBtn);
 
 	messageDiv.appendChild(btns);
+}
+
+function updateGameInfo() {
+	document.querySelector("#welcoming-message").innerText +=
+		" " + getFromLocalStorage("name");
+
+	for (let index = 1; index <= 9; index++) {
+		const solContainer = document.createElement("div");
+		const solImage = document.createElement("img");
+		const solNumber = document.createElement("span");
+
+		solImage.src = `./images/${getFromLocalStorage("theme")}/${index}.jpg`;
+		solNumber.innerText = index;
+
+		solContainer.appendChild(solImage);
+		solContainer.appendChild(solNumber);
+		document.querySelector("#theme-images").appendChild(solContainer);
+	}
 }

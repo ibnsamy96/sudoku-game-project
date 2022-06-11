@@ -1,16 +1,30 @@
-import { saveToLocalStorage } from "../../js/local-storage.js";
+import {
+	getFromLocalStorage,
+	saveToLocalStorage,
+} from "../../js/local-storage.js";
 
 const themeSelectorElement = document.querySelectorAll(".theme-selector");
 
 themeSelectorElement.forEach((el) => {
-	el.addEventListener("click", function () {
-		const currentTheme = document.body.dataset.theme;
-		document.querySelector("." + currentTheme).classList.remove("selected");
-		document.body.dataset.theme = this.classList[1];
-		saveToLocalStorage("theme", this.classList[1]);
-		this.classList.add("selected");
-	});
+	el.addEventListener("click", updateTheme);
 });
+
+function updateTheme() {
+	const currentTheme = document.body.dataset.theme;
+	document.querySelector("." + currentTheme).classList.remove("selected");
+	document.body.dataset.theme = this.classList[1];
+	saveToLocalStorage("theme", this.classList[1]);
+	this.classList.add("selected");
+}
+
+(function () {
+	const currentTheme = getFromLocalStorage("theme");
+	console.log(currentTheme);
+	document
+		.querySelector(".theme-selector.selected")
+		.classList.remove("selected");
+	document.querySelector("." + currentTheme).classList.add("selected");
+})();
 
 const carousalPreviousBTNs = document.querySelectorAll(".previous");
 const carousalNextBTNs = document.querySelectorAll(".next");
