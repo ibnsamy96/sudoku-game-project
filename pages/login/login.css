@@ -1,8 +1,8 @@
-
 #login-page {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	color: var(--themePrimaryColor);
 }
 
 #login-page form {
@@ -35,4 +35,3 @@
 	outline: none;
 	width: 100%;
 }
-

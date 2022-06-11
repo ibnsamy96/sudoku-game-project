@@ -1,17 +1,31 @@
 [data-theme="egyptian"] {
 	--themeBG: url("../images/egyptian/bg.jpg");
-	--themeTitleColor: white;
-	--themeTitleFont: "Arial";
+	--themeTitleFont: "Tajawal", sans-serif;
+
+	--themePrimaryColor: #454141;
+	--themeSecondaryColor: #e8e6ef;
 }
 
 [data-theme="anime"] {
 	--themeBG: url("../images/anime/bg.jpg");
+	--themeTitleFont: "Indie Flower", cursive;
+
+	--themePrimaryColor: #2c1a6c;
+	--themeSecondaryColor: #e8e6ef;
 }
 
 [data-theme="cartoon-network"] {
 	--themeBG: url("../images/cartoon-network/bg.jpg");
+	--themeTitleFont: "Gloria Hallelujah", cursive;
+
+	--themePrimaryColor: #383455;
+	--themeSecondaryColor: #e8e6ef;
 }
 
 [data-theme="spacetoon"] {
 	--themeBG: url("../images/spacetoon/bg.jpg");
+	--themeTitleFont: "Kdam Thmor Pro", sans-serif;
+
+	--themePrimaryColor: #e8e6ef;
+	--themeSecondaryColor: #383455;
 }
