@@ -71,7 +71,9 @@ export function initGamePage() {
 					"ArrowDown",
 					"ArrowUp",
 					"ArrowRight",
-					..."123456789",
+					...Array.from({ length: userSelectedLevel }, (_, i) =>
+						(i + 1).toString()
+					),
 				].includes(event.key)
 			)
 				return;
