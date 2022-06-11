@@ -28,12 +28,10 @@ export class Board {
 				this.#cellsArray[index - 1] ||
 				this.#cellsArray[this.#boardCellsNumber - 1];
 			cell.right = this.#cellsArray[index + 1] || this.#cellsArray[0];
-			cell.top =
-				this.#cellsArray[index - this.#cellsPerRow] ||
-				this.#cellsArray[this.#boardCellsNumber + index - this.#cellsPerRow];
-			cell.bottom =
-				this.#cellsArray[index + this.#cellsPerRow] ||
-				this.#cellsArray[-this.#boardCellsNumber + index + this.#cellsPerRow];
+			cell.up =
+				this.#cellsArray[index - this.#cellsPerRow] || this.#cellsArray[index];
+			cell.down =
+				this.#cellsArray[index + this.#cellsPerRow] || this.#cellsArray[index];
 		});
 	}
 
@@ -42,5 +40,11 @@ export class Board {
 	}
 	get boardCellsNumber() {
 		return this.#boardCellsNumber;
+	}
+
+	getSelectedCell() {
+		return this.#cellsArray.find(
+			(cellObject) => cellObject.activeState === true
+		);
 	}
 }

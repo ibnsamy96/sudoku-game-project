@@ -1,27 +1,27 @@
 export class Cell {
 	#element;
-	#top;
+	#up;
 	#left;
 	#right;
-	#bottom;
+	#down;
 	#activeState;
 	#currentValue = 0;
 	#answerValue;
 
 	constructor() {
 		this.#element = document.createElement("div");
-		// this.#currentValue = currentValue;
+		this.#element.classList.add("cell");
 	}
 
 	get element() {
 		return this.#element;
 	}
 
-	get top() {
-		return this.#top;
+	get up() {
+		return this.#up;
 	}
-	set top(squareObject) {
-		this.#top = squareObject;
+	set up(squareObject) {
+		this.#up = squareObject;
 	}
 
 	get left() {
@@ -38,11 +38,11 @@ export class Cell {
 		this.#right = squareObject;
 	}
 
-	get bottom() {
-		return this.#bottom;
+	get down() {
+		return this.#down;
 	}
-	set bottom(squareObject) {
-		this.#bottom = squareObject;
+	set down(squareObject) {
+		this.#down = squareObject;
 	}
 
 	get currentValue() {
@@ -67,10 +67,10 @@ export class Cell {
 	}
 	focus() {
 		this.#activeState = true;
-		this.#element.classList.add("active");
+		this.#element.classList.add("selected");
 	}
 	unfocus() {
 		this.#activeState = false;
-		this.#element.classList.remove("active");
+		this.#element.classList.remove("selected");
 	}
 }

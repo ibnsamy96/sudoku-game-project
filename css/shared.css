@@ -1,0 +1,22 @@
+.btn {
+	background-color: blueviolet !important;
+	cursor: pointer;
+	color: white;
+	transition: background-color 100ms, outline-color 100ms;
+	padding: 10px;
+	border: none;
+	outline: solid 3px transparent;
+	border-radius: 5px;
+}
+
+.btn:hover {
+	background-color: blue !important;
+}
+
+.btn:focus-within {
+	outline-color: rgba(0, 0, 220, 0.2);
+}
+
+.d-none {
+	display: none !important;
+}
