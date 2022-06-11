@@ -7,6 +7,7 @@ export class Cell {
 	#activeState;
 	#currentValue = 0;
 	#answerValue;
+	#defaultCell = false;
 
 	constructor() {
 		this.#element = document.createElement("div");
@@ -45,13 +46,19 @@ export class Cell {
 		this.#down = squareObject;
 	}
 
+	set defaultCell(state) {
+		this.#defaultCell = state;
+	}
+
 	get currentValue() {
 		return this.#currentValue;
 	}
 	set currentValue({ number, imageUrl }) {
+		if (this.#defaultCell) return;
 		const parsedNumber = parseInt(number);
 		if (isNaN(parsedNumber)) return;
 		this.#currentValue = parsedNumber;
+		console.log({ number, curr: this.#currentValue });
 		this.#element.style.backgroundImage = "url(" + imageUrl + ")";
 	}
 

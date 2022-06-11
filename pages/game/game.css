@@ -114,5 +114,6 @@
 	width: calc(100% / 9);
 }
 .cell.selected {
-	border-color: black;
+	border-color: #473232;
+	border-width: 3px;
 }

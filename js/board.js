@@ -29,6 +29,7 @@ export class Board {
 				}.jpg`,
 			};
 			cell.answerValue = solution[index];
+			if (cell.currentValue) cell.defaultCell = true;
 
 			cell.left =
 				this.#cellsArray[index - 1] ||
@@ -55,6 +56,7 @@ export class Board {
 	}
 
 	isThereWrongCells() {
+		console.log(this.#cellsArray);
 		const wrongCells = this.#cellsArray.reduce((acc, cellObject) => {
 			if (cellObject.currentValue !== cellObject.answerValue)
 				acc.push(cellObject);

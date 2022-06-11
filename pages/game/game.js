@@ -11,12 +11,15 @@ export function initGamePage() {
 	const timerElement = document.querySelector("#timer");
 	const startBtn = document.querySelector("#start-btn");
 	const userSelectedLevel = parseInt(getFromLocalStorage("level"));
+	const messageDiv = document.querySelector("#message-container div");
 	let gameBoard;
+	let timerInterval;
 
 	(async function () {
 		const data = await fetchBoard(userSelectedLevel);
 		gameBoard = new Board(userSelectedLevel, data.board, data.solution);
 		console.log(data);
+		console.log(gameBoard.cellsArray);
 
 		updateGameInfo();
 		renderBoard(gameBoard);
@@ -25,30 +28,41 @@ export function initGamePage() {
 		gamePage.classList.remove("d-none");
 	})();
 
-	if (isInitDone) return;
-
 	function renderBoard(gameBoard) {
 		gameBoard.cellsArray.forEach((cellObject) => {
+			cellObject.element.classList.add("row-" + userSelectedLevel);
 			gamePage.querySelector("#board").appendChild(cellObject.element);
 		});
 	}
 
 	function changeCellValue(number, currentSelectedCell) {
-		currentSelectedCell.currentValue = number;
-		currentSelectedCell.element.style.backgroundImage = `url(../images/${getFromLocalStorage(
-			"theme"
-		)}/${number}.jpg)`;
+		currentSelectedCell.currentValue = {
+			number,
+			imageUrl: `../images/${getFromLocalStorage("theme")}/${number}.jpg`,
+		};
+		// currentSelectedCell.element.style.backgroundImage = ;
 
 		const wrongCells = gameBoard.isThereWrongCells();
-		if (wrongCells.length === 0) declareWinner();
+		if (!wrongCells) declareWinner();
+
+		// const wrongCells = gameBoard.isThereWrongCells();
+		// if () {
+		// 	declareWinner();
+		// 	return;
+		// }
 	}
 
+	startBtn.removeEventListener("click", startGame);
 	startBtn.addEventListener("click", startGame);
+
+	if (isInitDone) return;
 
 	function startGame() {
 		gameBoard.cellsArray[0].focus();
 		console.log(gameBoard.getSelectedCell());
-		startTimer(1);
+
+		const gamePeriod = userSelectedLevel === 4 ? 1 : 2;
+		startTimer(gamePeriod);
 
 		document.body.addEventListener("keydown", function (event) {
 			if (
@@ -103,7 +117,7 @@ export function initGamePage() {
 		let minutes = "0" + period;
 		let seconds = "00";
 
-		const timerInterval = setInterval(() => {
+		timerInterval = setInterval(() => {
 			const currentMinutes = parseInt(minutes);
 			const currentSeconds = parseInt(seconds);
 			// console.log({ currentMinutes, currentSeconds });
@@ -112,12 +126,12 @@ export function initGamePage() {
 				if (currentMinutes === 0) {
 					console.log("done");
 					// TODO checkBoard
-					clearInterval(timerInterval);
+
 					gameBoard.getSelectedCell().unfocus();
 
 					const wrongCells = gameBoard.isThereWrongCells();
 					if (!wrongCells) {
-						declareWinner();
+						declareWinner(timerInterval);
 						return;
 					}
 
@@ -150,9 +164,8 @@ export function initGamePage() {
 		}, 1000);
 	}
 
-	const messageDiv = document.querySelector("#message-container div");
-
 	function declareWinner() {
+		clearInterval(timerInterval);
 		messageDiv.parentElement.classList.remove("d-none");
 
 		messageDiv.querySelector("#title").innerText = "CONGRATULATIONS!";
@@ -161,6 +174,8 @@ export function initGamePage() {
 		addMessageBTNs();
 	}
 	function declareLoser(wrongCellsNumber) {
+		clearInterval(timerInterval);
+
 		messageDiv.parentElement.classList.remove("d-none");
 
 		messageDiv.querySelector("#title").innerText = "OOPS!";
@@ -171,6 +186,9 @@ export function initGamePage() {
 	}
 
 	function addMessageBTNs() {
+		if (document.querySelector("#btns"))
+			document.querySelector("#btns").remove();
+
 		const btns = document.createElement("div");
 		btns.id = "btns";
 
