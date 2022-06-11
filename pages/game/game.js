@@ -114,7 +114,7 @@ export function initGamePage() {
 		const minutesSpan = timerElement.querySelector("#minutes");
 		const secondsSpan = timerElement.querySelector("#seconds");
 		minutesSpan.innerText = "0" + period;
-		minutesSpan.innerText = "00";
+		secondsSpan.innerText = "00";
 
 		let minutes = "0" + period;
 		let seconds = "00";
