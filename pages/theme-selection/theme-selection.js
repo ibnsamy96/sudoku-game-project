@@ -2,7 +2,7 @@ import {
 	getFromLocalStorage,
 	saveToLocalStorage,
 } from "../../js/local-storage.js";
-import { page3Shown } from "../../js/router.js";
+import { showGame } from "../../js/router.js";
 
 let isInitDone = false;
 
@@ -82,8 +82,8 @@ export function initThemeSelectionPage() {
 		event.preventDefault();
 		event.stopPropagation();
 		console.log("click event");
-		// const page3Shown = new Event("page3Shown");
-		document.body.dispatchEvent(page3Shown);
+		// const showGame = new Event("showGame");
+		document.body.dispatchEvent(showGame);
 	});
 
 	isInitDone = true;

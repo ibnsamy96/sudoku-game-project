@@ -16,7 +16,7 @@ import { getFromLocalStorage, saveToLocalStorage } from "./local-storage.js";
 
 window.addEventListener("load", initLoginPage);
 
-document.body.addEventListener("page1Shown", function (event) {
+document.body.addEventListener("showLogin", function (event) {
 	event.stopPropagation();
 	document.querySelector("#login-page").classList.remove("d-none");
 	document.querySelector("#theme-selection-page").classList.add("d-none");
@@ -24,7 +24,7 @@ document.body.addEventListener("page1Shown", function (event) {
 	initLoginPage();
 });
 
-document.body.addEventListener("page2Shown", function (event) {
+document.body.addEventListener("showThemeSelector", function (event) {
 	event.stopPropagation();
 	document.querySelector("#login-page").classList.add("d-none");
 	document.querySelector("#theme-selection-page").classList.remove("d-none");

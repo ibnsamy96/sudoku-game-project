@@ -2,7 +2,7 @@ import {
 	saveToLocalStorage,
 	getFromLocalStorage,
 } from "../../js/local-storage.js";
-import { page2Shown } from "../../js/router.js";
+import { showThemeSelector } from "../../js/router.js";
 
 let isInitDone = false;
 
@@ -25,8 +25,8 @@ export function initLoginPage() {
 		saveToLocalStorage("name", name);
 		saveToLocalStorage("level", level);
 
-		// const page2Shown = new Event("page2Shown");
-		document.body.dispatchEvent(page2Shown);
+		// const showThemeSelector = new Event("showThemeSelector");
+		document.body.dispatchEvent(showThemeSelector);
 	});
 
 	isInitDone = true;

@@ -1,7 +1,7 @@
 import { fetchBoard } from "../../js/api.js";
 import { Board } from "./board.js";
 import { getFromLocalStorage } from "../../js/local-storage.js";
-import { page1Shown, page3Shown } from "../../js/router.js";
+import { showLogin, showGame } from "../../js/router.js";
 
 let isInitDone = false;
 
@@ -202,8 +202,8 @@ export function initGamePage() {
 		backToLoginBtn.innerText = "Go Home";
 
 		backToLoginBtn.addEventListener("click", function () {
-			console.log("page1Shown");
-			document.body.dispatchEvent(page1Shown);
+			console.log("showLogin");
+			document.body.dispatchEvent(showLogin);
 			messageDiv.parentElement.classList.add("d-none");
 		});
 
@@ -212,8 +212,8 @@ export function initGamePage() {
 		playAgainBtn.innerText = "Play Again";
 
 		playAgainBtn.addEventListener("click", function () {
-			console.log("page3Shown");
-			document.body.dispatchEvent(page3Shown);
+			console.log("showGame");
+			document.body.dispatchEvent(showGame);
 			messageDiv.parentElement.classList.add("d-none");
 		});
 

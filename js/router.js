@@ -1,3 +1,3 @@
-export const page1Shown = new Event("page1Shown");
-export const page2Shown = new Event("page2Shown");
-export const page3Shown = new Event("page3Shown");
+export const showLogin = new Event("showLogin");
+export const showThemeSelector = new Event("showThemeSelector");
+export const showGame = new Event("showGame");
