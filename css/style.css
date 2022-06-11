@@ -96,7 +96,7 @@ section[id$="-page"] {
 	}
 
 	#message-container div::after {
-		content: "Sorry for that behavior but this page need to be displayed on bigger screen!";
+		content: "Sorry for this behavior but the game needs to be displayed on bigger screen!";
 		/*position: absolute;
 		top: 50%;
 		left: 50%; */
