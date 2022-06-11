@@ -1,4 +1,5 @@
 import { Cell } from "./cell.js";
+import { getFromLocalStorage } from "./local-storage.js";
 
 export class Board {
 	#cellsPerRow;
@@ -21,7 +22,12 @@ export class Board {
 
 	#defineCellsProperties(problem, solution) {
 		this.#cellsArray.forEach((cell, index) => {
-			cell.currentValue = problem[index];
+			cell.currentValue = {
+				number: problem[index],
+				imageUrl: `../images/${getFromLocalStorage("theme") || "egyptian"}/${
+					problem[index]
+				}.jpg`,
+			};
 			cell.answerValue = solution[index];
 
 			cell.left =
@@ -46,5 +52,15 @@ export class Board {
 		return this.#cellsArray.find(
 			(cellObject) => cellObject.activeState === true
 		);
+	}
+
+	isThereWrongCells() {
+		const wrongCells = this.#cellsArray.reduce((acc, cellObject) => {
+			if (cellObject.currentValue !== cellObject.answerValue)
+				acc.push(cellObject);
+			return acc;
+		}, []);
+
+		return wrongCells.length > 0 ? wrongCells : false;
 	}
 }

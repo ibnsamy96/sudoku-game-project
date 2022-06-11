@@ -134,9 +134,12 @@
 
 		<section id="game-page" class="d-none">
 			<div id="info">
+				<!-- TODO use right naming -->
 				<p id="welcoming-message">Welcome Mahmdddd</p>
 				<button id="start-btn" class="btn" type="button">Start</button>
-				<p id="timer" class="d-none"></p>
+				<p id="timer" class="d-none">
+					<span id="minutes">02</span>:<span id="seconds">00</span>
+				</p>
 				<div id="theme-images">
 					<div>
 						<img src="./images/egyptian/1.jpg" />
@@ -180,6 +183,13 @@
 				<div id="board"></div>
 			</div>
 		</section>
+
+		<div id="message-container" class="d-none">
+			<div>
+				<p id="title"></p>
+				<p id="body"></p>
+			</div>
+		</div>
 		<script type="module" src="./index.js"></script>
 	</body>
 </html>

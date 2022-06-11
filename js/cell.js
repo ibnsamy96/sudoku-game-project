@@ -48,10 +48,11 @@ export class Cell {
 	get currentValue() {
 		return this.#currentValue;
 	}
-	set currentValue(number) {
+	set currentValue({ number, imageUrl }) {
 		const parsedNumber = parseInt(number);
 		if (isNaN(parsedNumber)) return;
 		this.#currentValue = parsedNumber;
+		this.#element.style.backgroundImage = "url(" + imageUrl + ")";
 	}
 
 	get answerValue() {

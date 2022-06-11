@@ -1,3 +1,5 @@
+import { saveToLocalStorage } from "../../js/local-storage.js";
+
 const themeSelectorElement = document.querySelectorAll(".theme-selector");
 
 themeSelectorElement.forEach((el) => {
@@ -5,6 +7,7 @@ themeSelectorElement.forEach((el) => {
 		const currentTheme = document.body.dataset.theme;
 		document.querySelector("." + currentTheme).classList.remove("selected");
 		document.body.dataset.theme = this.classList[1];
+		saveToLocalStorage("theme", this.classList[1]);
 		this.classList.add("selected");
 	});
 });
