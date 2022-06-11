@@ -169,7 +169,8 @@ export function initGamePage() {
 		clearInterval(timerInterval);
 		messageDiv.parentElement.classList.remove("d-none");
 
-		messageDiv.querySelector("#title").innerText = "CONGRATULATIONS!";
+		messageDiv.querySelector("#title").innerHTML =
+			`<i class="fa-solid fa-trophy"></i>` + " CONGRATULATIONS!";
 		messageDiv.querySelector("#body").innerText = "you won the game :D";
 
 		addMessageBTNs();
@@ -179,7 +180,8 @@ export function initGamePage() {
 
 		messageDiv.parentElement.classList.remove("d-none");
 
-		messageDiv.querySelector("#title").innerText = "OOPS!";
+		messageDiv.querySelector("#title").innerHTML =
+			`<i class="fa-solid fa-heart-crack"></i>` + " OOPS!";
 		messageDiv.querySelector("#body").innerText =
 			"you had " + wrongCellsNumber + " wrong cells!";
 
