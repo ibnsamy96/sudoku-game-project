@@ -8,7 +8,7 @@ export async function fetchBoard(cellsPerRow) {
 		const board = await response.json();
 		return board;
 	} catch (error) {
-		console.log(error);
+		console.error(error);
 	}
 }
 

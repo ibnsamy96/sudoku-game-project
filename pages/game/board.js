@@ -1,5 +1,5 @@
 import { Cell } from "./cell.js";
-import { getFromLocalStorage } from "./local-storage.js";
+import { getFromLocalStorage } from "../../js/local-storage.js";
 
 export class Board {
 	#cellsPerRow;

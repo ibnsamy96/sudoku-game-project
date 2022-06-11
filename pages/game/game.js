@@ -1,5 +1,5 @@
-import { fetchBoard } from "../../api.js";
-import { Board } from "../../js/board.js";
+import { fetchBoard } from "../../js/api.js";
+import { Board } from "./board.js";
 import { getFromLocalStorage } from "../../js/local-storage.js";
 import { page1Shown, page3Shown } from "../../js/router.js";
 
@@ -127,7 +127,6 @@ export function initGamePage() {
 			if (currentSeconds === 0) {
 				if (currentMinutes === 0) {
 					console.log("done");
-					// TODO checkBoard
 
 					gameBoard.getSelectedCell().unfocus();
 
@@ -199,7 +198,7 @@ export function initGamePage() {
 		backToLoginBtn.style.backgroundColor = "#191919 !important";
 		backToLoginBtn.style.display = "inline-block";
 		backToLoginBtn.innerText = "Go Home";
-		// TODO make it go home
+
 		backToLoginBtn.addEventListener("click", function () {
 			console.log("page1Shown");
 			document.body.dispatchEvent(page1Shown);
@@ -209,7 +208,7 @@ export function initGamePage() {
 		const playAgainBtn = document.createElement("a");
 		playAgainBtn.classList.add("btn");
 		playAgainBtn.innerText = "Play Again";
-		// TODO make it play again
+
 		playAgainBtn.addEventListener("click", function () {
 			console.log("page3Shown");
 			document.body.dispatchEvent(page3Shown);
