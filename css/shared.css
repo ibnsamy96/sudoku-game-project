@@ -17,6 +17,16 @@
 	outline-color: rgba(0, 0, 220, 0.2);
 }
 
+.btn.secondary {
+	background-color: bisque !important;
+	color: #000 !important;
+}
+
+.btn.secondary:hover {
+	background-color: burlywood !important;
+	color: #000 !important;
+}
+
 .d-none {
 	display: none !important;
 }

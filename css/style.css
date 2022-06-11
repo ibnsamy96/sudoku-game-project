@@ -79,12 +79,28 @@ section[id$="-page"] {
 	justify-content: space-around;
 }
 
-a.secondary {
-	background-color: bisque !important;
-	color: #000 !important;
-}
+@media screen and (max-width: 1130px) {
+	section {
+		display: none !important;
+	}
+	#message-container {
+		display: flex !important;
+	}
 
-a.secondary:hover {
-	background-color: burlywood !important;
-	color: #000 !important;
+	#message-container div {
+		max-width: 90%;
+	}
+
+	#message-container p {
+		display: none;
+	}
+
+	#message-container div::after {
+		content: "Sorry for that behavior but this page need to be displayed on bigger screen!";
+		/*position: absolute;
+		top: 50%;
+		left: 50%; */
+		display: block;
+		font-size: 1.3rem;
+	}
 }
